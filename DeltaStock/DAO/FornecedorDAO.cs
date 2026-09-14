@@ -9,7 +9,8 @@ namespace DeltaStock.DAO
         [StringLength(150)]
         public string Nome { get; set; } = string.Empty;
         [StringLength(18)]
-        
+        public string Cnpj { get; set; } = string.Empty;
+
 
     }
 }
