@@ -16,7 +16,7 @@ namespace DeltaStock.DAO
 
         [EmailAddress(ErrorMessage = "Informe um e-mail válido.")]
         [StringLength(150)]
-       
+        public string Email { get; set; } = string.Empty;
 
     }
 }
