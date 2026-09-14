@@ -5,6 +5,7 @@ namespace DeltaStock.Configs
     public class Conexao
     {
 
+
         private readonly string _connectionString;
         public Conexao(IConfiguration configuration)
         {
@@ -17,6 +18,7 @@ namespace DeltaStock.Configs
             conn.Open();
             return conn;
         }
+
 
         public MySqlCommand CreateCommand(string query, MySqlConnection? conn = null)
         {
