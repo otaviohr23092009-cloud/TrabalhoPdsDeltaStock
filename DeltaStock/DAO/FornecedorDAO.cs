@@ -8,7 +8,8 @@ namespace DeltaStock.DAO
         [Required(ErrorMessage = "Informe o nome do fornecedor.")]
         [StringLength(150)]
         public string Nome { get; set; } = string.Empty;
+        [StringLength(18)]
+        
 
-       
     }
 }
