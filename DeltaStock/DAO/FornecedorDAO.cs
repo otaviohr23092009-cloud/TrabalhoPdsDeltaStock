@@ -3,6 +3,6 @@ namespace DeltaStock.DAO
 {
     public class FornecedorDAO
     {
-
+        public int IdFornecedor { get; set; }
     }
 }
