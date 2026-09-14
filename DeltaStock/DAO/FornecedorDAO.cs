@@ -12,7 +12,9 @@ namespace DeltaStock.DAO
         public string Cnpj { get; set; } = string.Empty;
 
         [StringLength(20)]
-       
+        public string Telefone { get; set; } = string.Empty;
+
+        
 
     }
 }
