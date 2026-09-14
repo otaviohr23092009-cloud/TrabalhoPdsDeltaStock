@@ -5,6 +5,7 @@ namespace DeltaStock.DAO
     {
         public int IdFornecedor { get; set; }
         [Required(ErrorMessage = "Informe o nome do fornecedor.")]
+        [StringLength(150)]
 
     }
 }
