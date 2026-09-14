@@ -1,14 +1,14 @@
-﻿using DeltaStock.Configs;
-using DeltaStock.Models;
+﻿using System;
+using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+using DeltaStock.Configs;
+using DeltaStock.Models;
 
 namespace DeltaStock.DAO
 {
     public class FornecedorDAO
     {
-        // ==============================
-        // CADASTRAR FORNECEDOR
-        // ==============================
+      
         public void Cadastrar(Fornecedor fornecedor)
         {
             using (var conexao = Conexao.GetConexao())
@@ -30,10 +30,7 @@ namespace DeltaStock.DAO
             }
         }
 
-
-        // ==============================
-        // LISTAR TODOS OS FORNECEDORES
-        // ==============================
+  
         public List<Fornecedor> Listar()
         {
             List<Fornecedor> fornecedores = new List<Fornecedor>();
@@ -47,13 +44,14 @@ namespace DeltaStock.DAO
                 {
                     while (leitor.Read())
                     {
-                        Fornecedor fornecedor = new Fornecedor();
-
-                        fornecedor.Id = Convert.ToInt32(leitor["id"]);
-                        fornecedor.Nome = leitor["nome"].ToString();
-                        fornecedor.Cnpj = leitor["cnpj"].ToString();
-                        fornecedor.Telefone = leitor["telefone"].ToString();
-                        fornecedor.Email = leitor["email"].ToString();
+                        Fornecedor fornecedor = new Fornecedor
+                        {
+                            Id = Convert.ToInt32(leitor["id"]),
+                            Nome = leitor["nome"].ToString(),
+                            Cnpj = leitor["cnpj"].ToString(),
+                            Telefone = leitor["telefone"].ToString(),
+                            Email = leitor["email"].ToString()
+                        };
 
                         fornecedores.Add(fornecedor);
                     }
@@ -63,10 +61,7 @@ namespace DeltaStock.DAO
             return fornecedores;
         }
 
-
-        // ==============================
-        // BUSCAR FORNECEDOR PELO ID
-        // ==============================
+    
         public Fornecedor BuscarPorId(int id)
         {
             Fornecedor fornecedor = null;
@@ -83,13 +78,14 @@ namespace DeltaStock.DAO
                     {
                         if (leitor.Read())
                         {
-                            fornecedor = new Fornecedor();
-
-                            fornecedor.Id = Convert.ToInt32(leitor["id"]);
-                            fornecedor.Nome = leitor["nome"].ToString();
-                            fornecedor.Cnpj = leitor["cnpj"].ToString();
-                            fornecedor.Telefone = leitor["telefone"].ToString();
-                            fornecedor.Email = leitor["email"].ToString();
+                            fornecedor = new Fornecedor
+                            {
+                                Id = Convert.ToInt32(leitor["id"]),
+                                Nome = leitor["nome"].ToString(),
+                                Cnpj = leitor["cnpj"].ToString(),
+                                Telefone = leitor["telefone"].ToString(),
+                                Email = leitor["email"].ToString()
+                            };
                         }
                     }
                 }
@@ -98,10 +94,7 @@ namespace DeltaStock.DAO
             return fornecedor;
         }
 
-
-        // ==============================
-        // BUSCAR PELO NOME
-        // ==============================
+        
         public List<Fornecedor> BuscarPorNome(string nome)
         {
             List<Fornecedor> fornecedores = new List<Fornecedor>();
@@ -120,13 +113,14 @@ namespace DeltaStock.DAO
                     {
                         while (leitor.Read())
                         {
-                            Fornecedor fornecedor = new Fornecedor();
-
-                            fornecedor.Id = Convert.ToInt32(leitor["id"]);
-                            fornecedor.Nome = leitor["nome"].ToString();
-                            fornecedor.Cnpj = leitor["cnpj"].ToString();
-                            fornecedor.Telefone = leitor["telefone"].ToString();
-                            fornecedor.Email = leitor["email"].ToString();
+                            Fornecedor fornecedor = new Fornecedor
+                            {
+                                Id = Convert.ToInt32(leitor["id"]),
+                                Nome = leitor["nome"].ToString(),
+                                Cnpj = leitor["cnpj"].ToString(),
+                                Telefone = leitor["telefone"].ToString(),
+                                Email = leitor["email"].ToString()
+                            };
 
                             fornecedores.Add(fornecedor);
                         }
@@ -137,10 +131,7 @@ namespace DeltaStock.DAO
             return fornecedores;
         }
 
-
-        // ==============================
-        // BUSCAR PELO CNPJ
-        // ==============================
+  
         public Fornecedor BuscarPorCnpj(string cnpj)
         {
             Fornecedor fornecedor = null;
@@ -157,13 +148,14 @@ namespace DeltaStock.DAO
                     {
                         if (leitor.Read())
                         {
-                            fornecedor = new Fornecedor();
-
-                            fornecedor.Id = Convert.ToInt32(leitor["id"]);
-                            fornecedor.Nome = leitor["nome"].ToString();
-                            fornecedor.Cnpj = leitor["cnpj"].ToString();
-                            fornecedor.Telefone = leitor["telefone"].ToString();
-                            fornecedor.Email = leitor["email"].ToString();
+                            fornecedor = new Fornecedor
+                            {
+                                Id = Convert.ToInt32(leitor["id"]),
+                                Nome = leitor["nome"].ToString(),
+                                Cnpj = leitor["cnpj"].ToString(),
+                                Telefone = leitor["telefone"].ToString(),
+                                Email = leitor["email"].ToString()
+                            };
                         }
                     }
                 }
@@ -172,10 +164,7 @@ namespace DeltaStock.DAO
             return fornecedor;
         }
 
-
-        // ==============================
-        // ALTERAR FORNECEDOR
-        // ==============================
+       
         public void Alterar(Fornecedor fornecedor)
         {
             using (var conexao = Conexao.GetConexao())
@@ -200,10 +189,7 @@ namespace DeltaStock.DAO
             }
         }
 
-
-        // ==============================
-        // EXCLUIR FORNECEDOR
-        // ==============================
+       
         public void Excluir(int id)
         {
             using (var conexao = Conexao.GetConexao())
@@ -213,16 +199,12 @@ namespace DeltaStock.DAO
                 using (var comando = new MySqlCommand(sql, conexao))
                 {
                     comando.Parameters.AddWithValue("@id", id);
-
                     comando.ExecuteNonQuery();
                 }
             }
         }
 
-
-        // ==============================
-        // VERIFICAR SE EXISTE
-        // ==============================
+       
         public bool Existe(int id)
         {
             using (var conexao = Conexao.GetConexao())
@@ -232,18 +214,13 @@ namespace DeltaStock.DAO
                 using (var comando = new MySqlCommand(sql, conexao))
                 {
                     comando.Parameters.AddWithValue("@id", id);
-
                     int quantidade = Convert.ToInt32(comando.ExecuteScalar());
-
                     return quantidade > 0;
                 }
             }
         }
 
-
-        // ==============================
-        // VERIFICAR CNPJ
-        // ==============================
+       
         public bool CnpjExiste(string cnpj)
         {
             using (var conexao = Conexao.GetConexao())
@@ -253,18 +230,13 @@ namespace DeltaStock.DAO
                 using (var comando = new MySqlCommand(sql, conexao))
                 {
                     comando.Parameters.AddWithValue("@cnpj", cnpj);
-
                     int quantidade = Convert.ToInt32(comando.ExecuteScalar());
-
                     return quantidade > 0;
                 }
             }
         }
 
-
-        // ==============================
-        // CONTAR FORNECEDORES
-        // ==============================
+       
         public int Contar()
         {
             using (var conexao = Conexao.GetConexao())
@@ -278,10 +250,7 @@ namespace DeltaStock.DAO
             }
         }
 
-
-        // ==============================
-        // EXCLUIR TODOS
-        // ==============================
+       
         public void ExcluirTodos()
         {
             using (var conexao = Conexao.GetConexao())
