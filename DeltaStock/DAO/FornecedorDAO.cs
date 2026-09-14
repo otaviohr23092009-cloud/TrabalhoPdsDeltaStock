@@ -9,5 +9,9 @@ namespace DeltaStock.DAO
         public string Nome { get; set; } = string.Empty;
         [StringLength(18)]
         public string Cnpj { get; set; } = string.Empty;
+
+        [StringLength(20)]
+        public string Telefone { get; set; } = string.Empty;
+
     }
 }
