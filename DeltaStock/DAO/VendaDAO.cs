@@ -1,7 +1,4 @@
-﻿using DeltaStock.Models;
-using DeltaStock.Configs;
-
-namespace DeltaStock.DAO
+﻿namespace DeltaStock.DAO
 {
     public class VendaDAO
     {
