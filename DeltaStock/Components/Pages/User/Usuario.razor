@@ -3,24 +3,60 @@
 <div class="usuario-page">
 
     <div class="usuario-header">
-        <h1>Gerenciamento de Usuários</h1>
+<div>
+    <h1>Gerenciamento de Usuários</h1>
+    <p>Usuários cadastrados no sistema.</p>
+</div>
 
         <button class="btn-novo">
             + Novo Usuário
         </button>
     </div>
 
+<div class="usuarios-container">
 
-    <div class="usuarios-container">
+    @if (Carregando)
+    {
+        <div class="usuario-feedback">
+            Carregando usuários...
+        </div>
+    }
+    else if (MensagemErro is not null)
+    {
+        <div class="usuario-feedback usuario-error">
+            <strong>Não foi possível carregar os usuários.</strong>
+            <span>@MensagemErro</span>
+        </div>
+    }
+    else if (Usuarios.Count == 0)
+    {
+        <div class="usuario-feedback">
+            Nenhum usuário cadastrado ainda.
+        </div>
+    }
+    else
+    {
 
 
-        <div class="usuario-card">
+@foreach (var usuario in Usuarios)
+{
+    <div class="usuario-card">
 
-            <div class="usuario-avatar">
-                👤
-            </div>
+        <div class="usuario-avatar">👤</div>
 
-            <div class="usuario-info">
+        <div class="usuario-info">
+            <h2>@usuario.Nome</h2>
+            <p>Email: @usuario.Email</p>
+            <p>Cargo: @usuario.Cargo</p>
+        </div>
+
+        <div class="acoes">
+            <button class="editar">Editar</button>
+            <button class="excluir">Excluir</button>
+        </div>
+
+    </div>
+}
 
                 <h2>João Da Silva</h2>
 
@@ -30,58 +66,6 @@
 
             </div>
 
-
-            <div class="acoes">
-
-                <button class="editar">
-                    Editar
-                </button>
-
-                <button class="excluir">
-                    Excluir
-                </button>
-
-            </div>
-
-
-        </div>
-
-
-
-        <div class="usuario-card">
-
-            <div class="usuario-avatar">
-                👤
-            </div>
-
-            <div class="usuario-info">
-
-                <h2>Rivelino Bahia</h2>
-
-                <p>Email: seurivas@gmail.com</p>
-
-                <p>Cargo: Funcionário</p>
-
-            </div>
-
-
-            <div class="acoes">
-
-                <button class="editar">
-                    Editar
-                </button>
-
-                <button class="excluir">
-                    Excluir
-                </button>
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
+    }
 
 </div>
